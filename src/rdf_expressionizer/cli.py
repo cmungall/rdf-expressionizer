@@ -1,4 +1,5 @@
 """Command line interface for rdf-expressionizer."""
+
 import logging
 from pathlib import Path
 
@@ -68,16 +69,17 @@ def main(verbose: int, quiet: bool):
 @output_option
 @click.argument("input_path")
 def replace(input_path, exclude_subset, mappings, output):
-    """Replace named entities with expressions in RDF file.
+    """
+    Replace named entities with expressions in RDF file.
 
     Example:
-
+    -------
         rdf-expressionizer replace -m bfo_xbfo_mappings -o xro.owl ro.owl
 
     To preserve a subset:
 
     Example:
-
+    -------
         rdf-expressionizer replace -x COB -m bfo_xbfo_mappings -o xro.owl ro.owl
 
     """
@@ -100,10 +102,11 @@ def replace(input_path, exclude_subset, mappings, output):
 @output_option
 @click.argument("input_path")
 def augment(input_path, include_subset, mappings, output):
-    """Augment occurrences of named entities with logical definitions.
+    """
+    Augment occurrences of named entities with logical definitions.
 
     Example:
-
+    -------
         rdf-expressionizer augment -m bfo_xbfo_mappings -o mcob.owl cob.owl
     """
     mappings_path = Path(MAPPING_DIR / f"{mappings}.csv")

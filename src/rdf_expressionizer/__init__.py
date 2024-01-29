@@ -1,4 +1,5 @@
 """rdf-expressionizer package."""
+
 import importlib_metadata
 
 try:

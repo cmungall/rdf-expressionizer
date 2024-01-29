@@ -2,10 +2,17 @@ from pathlib import Path
 from typing import Any
 
 import pytest
-from pyoxigraph import NamedNode, Triple, BlankNode
-
-from rdf_expressionizer.main import expressionify_triples, SUBCLASS_OF, RDF_TYPE, OWL_ON_PROPERTY, \
-    OWL_SOME_VALUES_FROM, OWL_RESTRICTION, file_replace, load_replacement_map
+from pyoxigraph import BlankNode, NamedNode, Triple
+from rdf_expressionizer.main import (
+    OWL_ON_PROPERTY,
+    OWL_RESTRICTION,
+    OWL_SOME_VALUES_FROM,
+    RDF_TYPE,
+    SUBCLASS_OF,
+    expressionify_triples,
+    file_replace,
+    load_replacement_map,
+)
 from rdf_expressionizer.mappings import BFO_MAPPINGS
 
 THIS_DIR = Path(__file__).parent
@@ -46,46 +53,51 @@ def triple_with_blank_conflated(triple: Triple) -> Triple:
     :param triple:
     :return:
     """
+
     def conflate_blank(node: Any) -> Any:
         if isinstance(node, BlankNode):
             return NamedNode("http://example.com/FAKE_BLANK")
         return node
+
     return Triple(*[conflate_blank(node) for node in triple])
 
-@pytest.mark.parametrize("name,triples,replacement_map,expected", [
-    (
-        "gci",
-        [triple(C1, SUBCLASS_OF, C2)],
-        {C1: (MIXIN_P, D1),
-         C2: (MIXIN_P, D2)},
-        [triple(BNODE1, SUBCLASS_OF, BNODE2),
-            triple(BNODE1, RDF_TYPE, OWL_RESTRICTION),
-            triple(BNODE1, OWL_ON_PROPERTY, MIXIN_P),
-            triple(BNODE1, OWL_SOME_VALUES_FROM, D1),
-            triple(BNODE2, RDF_TYPE, OWL_RESTRICTION),
-            triple(BNODE2, OWL_ON_PROPERTY, MIXIN_P),
-            triple(BNODE2, OWL_SOME_VALUES_FROM, D2),
-        ],
-     ),
-     (
-        "named_class",
-        [triple(C1, SUBCLASS_OF, C2)],
-        {
-         C2: (MIXIN_P, D2)},
-        [triple(C1, SUBCLASS_OF, BNODE2),
-            triple(BNODE2, RDF_TYPE, OWL_RESTRICTION),
-            triple(BNODE2, OWL_ON_PROPERTY, MIXIN_P),
-            triple(BNODE2, OWL_SOME_VALUES_FROM, D2),
-        ],
-     ),
-    (
-        "none",
-        [triple(C1, SUBCLASS_OF, C2)],
-        {},
-        [triple(C1, SUBCLASS_OF, C2)
-        ],
-     ),
-])
+
+@pytest.mark.parametrize(
+    "name,triples,replacement_map,expected",
+    [
+        (
+            "gci",
+            [triple(C1, SUBCLASS_OF, C2)],
+            {C1: (MIXIN_P, D1), C2: (MIXIN_P, D2)},
+            [
+                triple(BNODE1, SUBCLASS_OF, BNODE2),
+                triple(BNODE1, RDF_TYPE, OWL_RESTRICTION),
+                triple(BNODE1, OWL_ON_PROPERTY, MIXIN_P),
+                triple(BNODE1, OWL_SOME_VALUES_FROM, D1),
+                triple(BNODE2, RDF_TYPE, OWL_RESTRICTION),
+                triple(BNODE2, OWL_ON_PROPERTY, MIXIN_P),
+                triple(BNODE2, OWL_SOME_VALUES_FROM, D2),
+            ],
+        ),
+        (
+            "named_class",
+            [triple(C1, SUBCLASS_OF, C2)],
+            {C2: (MIXIN_P, D2)},
+            [
+                triple(C1, SUBCLASS_OF, BNODE2),
+                triple(BNODE2, RDF_TYPE, OWL_RESTRICTION),
+                triple(BNODE2, OWL_ON_PROPERTY, MIXIN_P),
+                triple(BNODE2, OWL_SOME_VALUES_FROM, D2),
+            ],
+        ),
+        (
+            "none",
+            [triple(C1, SUBCLASS_OF, C2)],
+            {},
+            [triple(C1, SUBCLASS_OF, C2)],
+        ),
+    ],
+)
 def test_replacement(name, triples, replacement_map, expected):
     """
     Test replacement
@@ -111,10 +123,13 @@ def test_replacement(name, triples, replacement_map, expected):
     assert len(expected) == 0, f"Did not find {expected}"
 
 
-@pytest.mark.parametrize("subset,expected_size", [
-    (None, 35),
-    ("COB", 26),
-])
+@pytest.mark.parametrize(
+    "subset,expected_size",
+    [
+        (None, 35),
+        ("COB", 26),
+    ],
+)
 def test_load_replacement_map(subset, expected_size):
     """
     Test loading a replacement map
@@ -125,15 +140,19 @@ def test_load_replacement_map(subset, expected_size):
     print(rmap)
     assert len(rmap) == expected_size
 
-@pytest.mark.parametrize("input_name,mappings_path,replace,subset", [
-    ("ro.owl", BFO_MAPPINGS, True, None),
-    ("ro_unsat.owl", BFO_MAPPINGS, True, None),
-    ("bfo.owl", BFO_MAPPINGS, True, None),
-    ("cob.owl", BFO_MAPPINGS, True, None),
-    ("cob.owl", BFO_MAPPINGS, True, "COB"),
-    ("cob.owl", BFO_MAPPINGS, False, None),
-    ("cob.owl", BFO_MAPPINGS, False, "COB"),
-])
+
+@pytest.mark.parametrize(
+    "input_name,mappings_path,replace,subset",
+    [
+        ("ro.owl", BFO_MAPPINGS, True, None),
+        ("ro_unsat.owl", BFO_MAPPINGS, True, None),
+        ("bfo.owl", BFO_MAPPINGS, True, None),
+        ("cob.owl", BFO_MAPPINGS, True, None),
+        ("cob.owl", BFO_MAPPINGS, True, "COB"),
+        ("cob.owl", BFO_MAPPINGS, False, None),
+        ("cob.owl", BFO_MAPPINGS, False, "COB"),
+    ],
+)
 def test_file_replacement(input_name, mappings_path: str, replace, subset):
     """
     Test replacement on a file

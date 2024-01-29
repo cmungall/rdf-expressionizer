@@ -1,13 +1,14 @@
 """Main python file."""
+
 import csv
 from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
-from typing import Dict, Iterator, Tuple, Union, Iterable, List, Optional
+from typing import Dict, Iterable, Iterator, List, Optional, Tuple, Union
 
 import curies
 from curies import Converter
-from pyoxigraph import Store, parse, Triple, NamedNode, BlankNode, Quad
+from pyoxigraph import BlankNode, NamedNode, Quad, Store, Triple, parse
 
 RDF_TYPE = NamedNode("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
 OWL_RESTRICTION = NamedNode("http://www.w3.org/2002/07/owl#Restriction")
@@ -76,7 +77,9 @@ def create_logical_definition(term: NamedNode, replacement: Tuple[OBJECT_PROPERT
     return triples
 
 
-def expressionify_triples(triple_it: Iterable[Triple], replacement_map: REPLACEMENT_MAP, equivalence_map: REPLACEMENT_MAP = None) -> Iterator[Triple]:
+def expressionify_triples(
+    triple_it: Iterable[Triple], replacement_map: REPLACEMENT_MAP, equivalence_map: REPLACEMENT_MAP = None
+) -> Iterator[Triple]:
     """
     Replace named entities in triples.
 
@@ -128,7 +131,14 @@ def generate_equivalence_axioms(triple_it: Iterable[Triple], equivalence_map: RE
             yield from create_logical_definition(node, equivalence_map[node])
 
 
-def file_replace(path: Union[str, Path], replacement_map: REPLACEMENT_MAP, input_type="application/rdf+xml", replace=True, output_path: Union[str, Path] = None, output_type=None):
+def file_replace(
+    path: Union[str, Path],
+    replacement_map: REPLACEMENT_MAP,
+    input_type="application/rdf+xml",
+    replace=True,
+    output_path: Union[str, Path] = None,
+    output_type=None,
+):
     """
     Replace named entities in a file.
 
@@ -166,6 +176,7 @@ def get_curie_converter(prefix_map: PREFIX_MAP = None) -> Converter:
         converter.add_prefix(k, v)
     return converter
 
+
 def named_node(n: str, prefix_map: PREFIX_MAP = None) -> NamedNode:
     """
     Create a named node
@@ -177,7 +188,13 @@ def named_node(n: str, prefix_map: PREFIX_MAP = None) -> NamedNode:
     return NamedNode(curie_converter.expand(n, passthrough=True))
 
 
-def load_replacement_map(path: Union[str, Path], delimiter=",", prefix_map: PREFIX_MAP=None, exclude_subsets: Optional[List]=None, include_subsets: Optional[List]=None) -> REPLACEMENT_MAP:
+def load_replacement_map(
+    path: Union[str, Path],
+    delimiter=",",
+    prefix_map: PREFIX_MAP = None,
+    exclude_subsets: Optional[List] = None,
+    include_subsets: Optional[List] = None,
+) -> REPLACEMENT_MAP:
     """
     Load a replacement map from a CSV.
 
@@ -198,6 +215,8 @@ def load_replacement_map(path: Union[str, Path], delimiter=",", prefix_map: PREF
             if include_subsets is not None and not any([subset in include_subsets for subset in subsets]):
                 # if the row is not in a subset to be includes
                 continue
-            rmap[named_node(row["source"], prefix_map)] = (named_node(row["property"], prefix_map), named_node(row["mapping"], prefix_map))
+            rmap[named_node(row["source"], prefix_map)] = (
+                named_node(row["property"], prefix_map),
+                named_node(row["mapping"], prefix_map),
+            )
     return rmap
-

@@ -1,6 +1,6 @@
 import pytest
-
 from rdf_expressionizer.cli import main
+
 from tests.test_main import INPUT_DIR, OUTPUT_DIR
 
 
@@ -24,10 +24,19 @@ CONTINUANT = "http://purl.obolibrary.org/obo/BFO_0000002"
 X_CONTINUANT = "https://w3id.org/xbfo/0000002"
 
 
-@pytest.mark.parametrize("input_name,mappings_path,subset,expected,unexpected", [
-    ("ro.owl", "bfo_xbfo_mappings", None, [X_CONTINUANT, X_DISPOSITION], [CONTINUANT, DISPOSITION]),
-    ("ro.owl", "bfo_xbfo_mappings", "COB", [X_CONTINUANT, DISPOSITION], [CONTINUANT, X_DISPOSITION], ),
-])
+@pytest.mark.parametrize(
+    "input_name,mappings_path,subset,expected,unexpected",
+    [
+        ("ro.owl", "bfo_xbfo_mappings", None, [X_CONTINUANT, X_DISPOSITION], [CONTINUANT, DISPOSITION]),
+        (
+            "ro.owl",
+            "bfo_xbfo_mappings",
+            "COB",
+            [X_CONTINUANT, DISPOSITION],
+            [CONTINUANT, X_DISPOSITION],
+        ),
+    ],
+)
 def test_cli_replace(runner, input_name, mappings_path, subset, expected, unexpected):
     """
     Tests repair command
@@ -54,9 +63,12 @@ def test_cli_replace(runner, input_name, mappings_path, subset, expected, unexpe
             assert unexpected_str not in stream.read()
 
 
-@pytest.mark.parametrize("input_name,mappings_path,subset,expected,unexpected", [
-    ("cob.owl", "bfo_xbfo_mappings", None, [DISPOSITION, X_DISPOSITION], [CONTINUANT]),
-])
+@pytest.mark.parametrize(
+    "input_name,mappings_path,subset,expected,unexpected",
+    [
+        ("cob.owl", "bfo_xbfo_mappings", None, [DISPOSITION, X_DISPOSITION], [CONTINUANT]),
+    ],
+)
 def test_cli_augment(runner, input_name, mappings_path, subset, expected, unexpected):
     """
     Tests augment command
@@ -79,4 +91,3 @@ def test_cli_augment(runner, input_name, mappings_path, subset, expected, unexpe
     for unexpected_str in unexpected:
         with open(output_file) as stream:
             assert unexpected_str not in stream.read()
-
