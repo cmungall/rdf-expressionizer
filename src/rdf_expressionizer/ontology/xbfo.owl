@@ -1,0 +1,340 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.w3.org/2002/07/owl"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <Ontology/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://w3id.org/xbfo/0000001 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000001">
+        <rdfs:label>entity nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000002 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000002">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000001"/>
+        <rdfs:label>continuant nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000003 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000003">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000001"/>
+        <rdfs:label>occurrent nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000004 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000004">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000002"/>
+        <rdfs:label>independent continuant nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000006 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000006">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000141"/>
+        <rdfs:label>spatial region nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000008 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000008">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000003"/>
+        <rdfs:label>temporal region nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000009 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000009">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000006"/>
+        <rdfs:label>two-dimensional spatial region nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000011 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000011">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000003"/>
+        <rdfs:label>spatiotemporal region nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000015 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000015">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000003"/>
+        <rdfs:label>process nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000016 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000016">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000017"/>
+        <rdfs:label>disposition nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000017 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000017">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000020"/>
+        <rdfs:label>realizable entity nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000018 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000018">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000006"/>
+        <rdfs:label>zero-dimensional spatial region nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000019 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000019">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000020"/>
+        <rdfs:label>quality nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000020 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000020">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000002"/>
+        <rdfs:label>specifically dependent continuant nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000023 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000023">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000017"/>
+        <rdfs:label>role nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000024 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000024">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000040"/>
+        <rdfs:label>fiat object part nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000026 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000026">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000006"/>
+        <rdfs:label>one-dimensional spatial region nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000027 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000027">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000040"/>
+        <rdfs:label>object aggregate nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000028 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000028">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000006"/>
+        <rdfs:label>three-dimensional spatial region nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000029 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000029">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000141"/>
+        <rdfs:label>site nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000030 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000030">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000040"/>
+        <rdfs:label>object nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000031 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000031">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000002"/>
+        <rdfs:label>generically dependent continuant nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000034 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000034">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000016"/>
+        <rdfs:label>function nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000035 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000035">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000003"/>
+        <rdfs:label>process boundary nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000038 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000038">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000008"/>
+        <rdfs:label>one-dimensional temporal region nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000040 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000040">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000004"/>
+        <rdfs:label>material entity nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000140 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000140">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000141"/>
+        <rdfs:label>continuant fiat boundary nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000141 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000141">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000004"/>
+        <rdfs:label>immaterial entity nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000142 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000142">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000140"/>
+        <rdfs:label>one-dimensional continuant fiat boundary nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000144 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000144">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000015"/>
+        <rdfs:label>process profile nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000145 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000145">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000019"/>
+        <rdfs:label>relational quality nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000146 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000146">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000140"/>
+        <rdfs:label>two-dimensional continuant fiat boundary nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000147 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000147">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000140"/>
+        <rdfs:label>zero-dimensional continuant fiat boundary nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000148 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000148">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000008"/>
+        <rdfs:label>zero-dimensional temporal region nature</rdfs:label>
+    </Class>
+    
+
+
+    <!-- https://w3id.org/xbfo/0000182 -->
+
+    <Class rdf:about="https://w3id.org/xbfo/0000182">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/xbfo/0000015"/>
+        <rdfs:label>history nature</rdfs:label>
+    </Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.26) https://github.com/owlcs/owlapi -->
+
